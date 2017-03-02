@@ -13,7 +13,6 @@
     <artifactId>personinfo1</artifactId>
     <packaging>bundle</packaging>
 
-
     <build>
         <plugins>
             <plugin>
