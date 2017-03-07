@@ -33,36 +33,17 @@ public class Route1 extends RouteBuilder {
 
             // FROM FILE TO FILE
 
-            from("file:C:/Kati/Marlo/GitRepo/FileReads/Project01/From")
+            //from("file:C:/Kati/Marlo/GitRepo/FileReads/Project01/From")
+            from("file:Transformation/src/main/resources/data/inbox?noop=true")
                     //unmarshalling is the process to read in xml and convert to java object using jaxb generated template
                     // classes
-                    .unmarshal(jaxbDataFormat1)
+                    .unmarshal(xmlJsonFormat)
                     //this is to invoke processor to transform person1 to person2
                     .bean(processor1Object, "processor1Method")   // object + method
                     //marshalling is the process to convert java to xml -- the processor from previous step returns
                     // a person2 which will be used to create the output xml
                     .marshal(jaxbDataFormat2)
-                    .to("file:C:/Kati/Marlo/GitRepo/FileReads/Project01/To");
-
-
-
-            // FROM AMQ TO AMQ
-
-          /*  from("amq:data.in")
-                    //unmarshalling is the process to read in xml and convert to java object using jaxb generated template
-                    // classes
-                    .unmarshal(jaxbDataFormatPerson1)
-                    //this is to invoke processor to transform person1 to person2
-                    .bean(processor, "myprocessor")
-                    //marshalling is the process to convert java to xml -- the processor from previous step returns
-                    // a person2 which will be used to create the output xml
-                    .marshal(jaxbDataFormatPerson2)
-                    .to("amq:data.out");
-         */
-
-
-
-
+                    .to("file:Transformation/src/main/resources/data/outbox");
         }
 
     }
