@@ -8,46 +8,23 @@ import processors.Processor1;
 
 public class Route1 extends RouteBuilder {
 
-        Processor1 processor1Object = new Processor1();
+    Processor1 processor1Object = new Processor1();
 
-        public void configure() throws Exception {
+    public void configure() throws Exception {
 
-
-        /*  From XML to JSON
-            from("direct:marshal")
-            .marshal(xmlJsonFormat)
-            .to("mock:json");
-
-            // From JSON to XML
-               from("direct:unmarshal")
-              .unmarshal(xmlJsonFormat)
-              .to("mock:xml");
-         */
-
-            XmlJsonDataFormat xmlJsonFormat = new XmlJsonDataFormat();
+        XmlJsonDataFormat xmlJsonFormat = new XmlJsonDataFormat();
 
 
-            //marshall method needs a java object called jaxbDataFormat2
-            JaxbDataFormat jaxbDataFormat2 = new JaxbDataFormat("employeeversion2");
+        //marshall method needs a java object called jaxbDataFormat2
+        JaxbDataFormat jaxbDataFormat2 = new JaxbDataFormat("employeeversion2");
 
 
-            // FROM FILE TO FILE
-
-            //from("file:C:/Kati/Marlo/GitRepo/FileReads/Project01/From")
-            from("file:Transformation/src/main/resources/data/inbox?noop=true")
-                    //unmarshalling is the process to read in xml and convert to java object using jaxb generated template
-                    // classes
-                    .unmarshal(xmlJsonFormat)
-                    //this is to invoke processor to transform person1 to person2
-                    .bean(processor1Object, "processor1Method")   // object + method
-                    //marshalling is the process to convert java to xml -- the processor from previous step returns
-                    // a person2 which will be used to create the output xml
-                    .marshal(jaxbDataFormat2)
-                    .to("file:Transformation/src/main/resources/data/outbox");
+        //from("file:C:/Kati/Marlo/GitRepo/FileReads/Project01/From")
+        from("file:Transformation/src/main/resources/data/inbox1?noop=true")
+                .unmarshal(xmlJsonFormat)
+                .bean(processor1Object, "processor1Method")   // object + method
+                .marshal(jaxbDataFormat2)
+                .to("file:Transformation/src/main/resources/data/outbox");
         }
 
-    }
-
-
-
-
+}

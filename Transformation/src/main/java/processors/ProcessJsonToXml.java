@@ -23,7 +23,7 @@ public class ProcessJsonToXml {
             Employee1 e1 = new  Employee1();
 
             e1.setFirstname(e2.getGivenname());
-            e1.getLastname(e2.getFamilyname());
+            //e1.getLastname(e2.getFamilyname());
 
 
             File fileOut = new File("Transformation/src/main/resources/outbox/employee1toemployee2.xml");

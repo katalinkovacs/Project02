@@ -23,6 +23,8 @@ public class ProcessJsonInfo {
                 String prettyemp2 = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(e2);
                 System.out.println(prettyemp2);
 
+
+
             } catch (JsonGenerationException e) {
                 e.printStackTrace();
             } catch (JsonMappingException e) {
