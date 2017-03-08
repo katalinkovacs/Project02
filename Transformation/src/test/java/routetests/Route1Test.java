@@ -52,7 +52,7 @@ public class Route1Test extends CamelTestSupport {
     @Test
     public void route1_whenValidInput_thenValidOutput() throws Exception{
         // reading in xml request and expected with some
-        String request = FileUtils.readFileToString(ResourceUtils.getFile("classpath:input/request1.xml"));
+        String request = FileUtils.readFileToString(ResourceUtils.getFile("classpath:input/employee2.json"));
         String expected = FileUtils.readFileToString(ResourceUtils.getFile("classpath:expected/expectedResultRoute1.xml"));
 
         // using template which is given by CamelTestSupport
