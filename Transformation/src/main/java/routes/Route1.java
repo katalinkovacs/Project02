@@ -13,8 +13,6 @@ public class Route1 extends RouteBuilder {
 
     public void configure() throws Exception {
 
-        //XmlJsonDataFormat xmlJsonFormat = new XmlJsonDataFormat();
-
         JacksonDataFormat myEmployee2JsonFormat = new JacksonDataFormat(employee2.Employee2.class);
 
         //marshall method needs a java object called jaxbDataFormat2
