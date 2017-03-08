@@ -33,7 +33,7 @@ public class Route1Test extends CamelTestSupport {
         // need the definition of the route to add test magic
         RouteDefinition route1Definition = context.getRouteDefinition("route1");
 
-
+        //override existing route with this
         route1Definition.adviceWith(context, new AdviceWithRouteBuilder() {
             @Override
             public void configure() throws Exception {
