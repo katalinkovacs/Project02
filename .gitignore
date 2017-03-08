@@ -1,2 +1,5 @@
 .idea/
 *.iml
+Transformation/target/
+Employee1/target/employee1-1.0-SNAPSHOT.jar
+Employee2/target/
