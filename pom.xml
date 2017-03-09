@@ -12,6 +12,7 @@
     <modules>
         <module>Employee1</module>
         <module>Employee2</module>
+        <module>Employee3</module>
         <module>Transformation</module>
     </modules>
 
