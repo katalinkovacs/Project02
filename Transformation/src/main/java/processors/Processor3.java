@@ -16,7 +16,7 @@ public class Processor3 {
 
 
             Employee3 e3 = new Employee3();
-            //WITH JSON ORDER IS IMPORTANT!!!!!!
+            //WITH JSON ORDER IS NOT IMPORTANT!!!!!!
             e3.setLastname(lastName);
             e3.setFirstname(firstName);
 

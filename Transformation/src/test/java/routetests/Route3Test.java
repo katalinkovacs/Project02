@@ -1,20 +1,17 @@
 package routetests;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.camel.Exchange;
 import org.apache.camel.builder.AdviceWithRouteBuilder;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.RouteDefinition;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.apache.commons.io.FileUtils;
-import org.custommonkey.xmlunit.DetailedDiff;
-import org.custommonkey.xmlunit.Diff;
-import org.custommonkey.xmlunit.Difference;
 import org.junit.Test;
 import org.springframework.util.ResourceUtils;
 import routes.Route3;
-import java.util.List;
-import static org.hamcrest.CoreMatchers.is;
 
+import java.util.Map;
 
 
 public class Route3Test extends CamelTestSupport{
@@ -63,21 +60,23 @@ public class Route3Test extends CamelTestSupport{
             // get the message body as string which is our xml output
             String result = ex.getIn().getBody(String.class);
 
+            ObjectMapper om = new ObjectMapper();
+
+
+                Map<String, Object> m1 = (Map<String, Object>)(om.readValue(expected, Map.class));
+                Map<String, Object> m2 = (Map<String, Object>)(om.readValue(result, Map.class));
+                System.out.println(m1);
+                System.out.println(m2);
+                System.out.println(m1.equals(m2));
+
+
+
             // the following is just a third party xml tool to help compare 2 xml files
             //https://technicalmumbojumbo.wordpress.com/2010/01/31/xml-comparison-tutorial-using-xmlunit/
-            Diff diff = new Diff(expected, result);
 
-            List<Difference> differences = new DetailedDiff(diff).getAllDifferences();
-
-            for (Object object : differences) {
-                Difference difference = (Difference)object;
-                System.out.println("***********************");
-                System.out.println(difference);
-                System.out.println("***********************");
-            }
 
             // we asserting that the differences are 0
-            assertThat(differences.size(), is(0));
+            assertEquals(m1, m2);
 
         }
     }
