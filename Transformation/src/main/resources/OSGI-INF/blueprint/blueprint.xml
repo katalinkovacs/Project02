@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+
+
+    <!-- Transform employee2/JSON to employee1/XML  -->
+
+    <bean id="route1bean" class="routes.Route1"> </bean>
+
+    <camelContext xmlns="http://camel.apache.org/schema/blueprint" id="project01-transformation-json-xml">
+          <routeBuilder ref="route1bean" id="route1" />
+    </camelContext>
+
+</blueprint>
